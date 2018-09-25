@@ -8,14 +8,13 @@
 git clone https://github.com/akiicat/iot-door.git
 cd iot-door
 npm install
-
-cp [YOUR_KEY_PATH] ./key.json
-cp app.example.key app.key
 ```
 
-### edit app.key
+### GCP Key file
 
-edit the environment variables missed in `app.key`.
+```shell
+cp [YOUR_KEY_PATH] ./key.json
+```
 
 ### Run
 
