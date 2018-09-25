@@ -11,9 +11,12 @@ const subscription = pubsub.subscription(subscriptionName);
 
 // Listen for new messages until timeout is hit
 subscription.on(`message`, function(message) {
-  console.log(`Received message ${message.id}:`);
-  console.log(`\tData: ${message.data}`);
-  console.log(`\tAttributes: ${message.attributes}`);
+  console.log(`Received message ${message.id}: ${message.data}`);
+
+  if (!IsJsonString(message.data)) {
+    message.ack();
+    return;
+  }
 
   var data = JSON.parse(message.data);
   console.log(data.door);
@@ -27,5 +30,14 @@ subscription.on(`message`, function(message) {
 
   message.ack();
 });
+
+function IsJsonString(str) {
+  try {
+    JSON.parse(str);
+  } catch (e) {
+    return false;
+  }
+  return true;
+}
 
 console.log('connected');
