@@ -4,7 +4,7 @@ const PubSub = require(`@google-cloud/pubsub`);
 // Creates a client
 const pubsub = new PubSub();
 
-const subscriptionName = process.env.PUBSUB_TOPIC;
+const subscriptionName = 'projects/sunlit-inquiry-164609/subscriptions/door-pi';
 
 // References an existing subscription
 const subscription = pubsub.subscription(subscriptionName);
@@ -27,3 +27,5 @@ subscription.on(`message`, function(message) {
 
   message.ack();
 });
+
+console.log('connected');

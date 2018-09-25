@@ -1,5 +1,5 @@
 {
-  "name": "iot gateway",
+  "name": "iot-gateway",
   "description": "iot gateway",
   "version": "0.0.1",
   "private": true,
