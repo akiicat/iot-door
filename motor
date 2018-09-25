@@ -1,0 +1,16 @@
+#!/usr/bin/python
+import time
+import RPi.GPIO as GPIO
+import sys
+GPIO.setmode(GPIO.BCM)
+MotorPin=14
+GPIO.setup(MotorPin,GPIO.OUT)
+pwm_motor = GPIO.PWM(MotorPin, 50)
+pwm_motor.start(7.5)
+
+if int(sys.argv[1]):
+    pwm_motor.ChangeDutyCycle(2.5)
+    time.sleep(1)
+else:
+    pwm_motor.ChangeDutyCycle(11)
+    time.sleep(1)

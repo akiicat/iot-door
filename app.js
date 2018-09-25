@@ -1,5 +1,6 @@
 // Imports the Google Cloud client library
 const PubSub = require(`@google-cloud/pubsub`);
+const exec = require('child_process').exec;
 
 // Creates a client
 const pubsub = new PubSub();
@@ -22,10 +23,19 @@ subscription.on(`message`, function(message) {
   console.log(data.door);
 
   if (data.door === 'on') {
-    console.log('door on');
+    exec('motor 1', {
+      cwd: process.env.PWD
+    }, function(error, stdout, stderr) {
+      console.log('door on');
+    });
+		  
   }
   if (data.door === 'off') {
-    console.log('door off');
+    exec('motor 0', {
+      cwd: process.env.PWD
+    }, function(error, stdout, stderr) {
+      console.log('door off');
+    });
   }
 
   message.ack();

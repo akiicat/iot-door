@@ -1,0 +1,14 @@
+[Unit]
+Description=DOOR
+After=network.target
+StartLimitIntervalSec=0
+[Service]
+Type=simple
+Restart=always
+RestartSec=1
+User=pi
+Environment=GOOGLE_APPLICATION_CREDENTIALS=/home/pi/Github/iot-door/key.json
+ExecStart=/usr/bin/node /home/pi/Github/iot-door/app.js
+
+[Install]
+WantedBy=multi-user.target
